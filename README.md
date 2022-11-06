@@ -4,7 +4,8 @@
 
 This is the central document for the design and implmentation of my experience portofolio (pome as Proof Of My Experiences) as a software programmer.
 
-Below link navigates you to the page I have implemented.
+Below link navigates you to the frontend application page I have implemented.
+
 http://pomefront.s3-website-ap-northeast-1.amazonaws.com/
 ![Page](./img/PomeFront.png)
 
@@ -41,7 +42,24 @@ https://github.com/HajimeK/pome_front/blob/main/package.json
 
 https://github.com/HajimeK/pome_front/blob/main/.circleci/config.yml
 
+
+[![CircleCI](https://circleci.com/gh/HajimeK/pome_front.svg?style=svg)](https://circleci.com/gh/HajimeK/pome_front)
+
 ![CircleCI Frontend Deployment](./img/circleci_pome_front.png)
+
+For AWS deployment, some keys are configured for the aws commands to get permissions to upload to AWS environnment.
+These are configured as environment variables in circleci as below.
+```
+  API_HOST
+  AWS_ACCESS_KEY_ID
+  AWS_DEFAULT_REGION
+  AWS_SECRET_ACCESS_KEY
+  PORT
+```
+![](./img/pomefrontenvincircleci.png)
+
+In the output windown, those variables are masked as \*\*REDACTED\*\*
+
 ## Middleware API service
 
 ### Software Design
@@ -61,9 +79,35 @@ https://github.com/HajimeK/pome_api/blob/main/package.json
 
 ### CI/CD with CircleCI
 
+[![CircleCI](https://circleci.com/gh/HajimeK/pome_api.svg?style=svg)](https://circleci.com/gh/HajimeK/pome_api)
 https://github.com/HajimeK/pome_api/blob/main/.circleci/config.yml
 
 ![CircleCI Deployment](./img/circleci_pome_api.png)
+
+For AWS deployment, some keys are configured for the aws commands to get permissions to upload to AWS environnment.
+These are configured as environment variables in circleci as below.
+```
+  AWS_ACCESS_KEY_ID
+  AWS_DEFAULT_REGION
+  AWS_SECRET_ACCESS_KEY
+```
+
+Middleware specifica environment variables are also set.
+```
+  ENV
+  PORT
+  POSTGRES_DB
+  POSTGRES_HOST
+  POSTGRES_PASSWORD
+  POSTGRES_USER
+  TOKEN_SECRET
+```
+
+![](./img/pomeapienvincircleci.png)
+
+In the output windown, those variables are masked as \*\*REDACTED\*\*
+
+
 ## Database Tables Design
 
 https://github.com/HajimeK/pome_db/blob/main/architecture/overview.md
